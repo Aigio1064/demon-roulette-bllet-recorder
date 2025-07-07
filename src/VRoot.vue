@@ -60,6 +60,7 @@ function setEmpty(value: string | number | Event) {
 function clear() {
     bullet.real.value = 0
     bullet.empty.value = 0
+    bullet.converter.value = false
 }
 function submit(e: Event) {
     const t = e.target as any
@@ -90,6 +91,9 @@ function submit(e: Event) {
         </div>
         <div>
             <button @click="useConverter">使用转换器 [{{ bullet.converter.value ? '已使用' : '未使用' }}]</button>
+        </div>
+        <div>
+            <a href="https://github.com/Aigio1064/demon-roulette-bllet-recorder">Aigio1064/demon-roulette-bllet-recorder</a>
         </div>
     </form>
 </template>
