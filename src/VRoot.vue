@@ -66,6 +66,10 @@ function submit(e: Event) {
     const t = e.target as any
     const real = t[2] as unknown as HTMLInputElement
     const empty = t[4] as unknown as HTMLInputElement
+    if (Number(real.value) + Number(empty.value) > 10) {
+        alert('实弹+空包不能大于10')
+        return
+    }
     setReal(real.value)
     setEmpty(empty.value)
 
@@ -80,12 +84,12 @@ function submit(e: Event) {
         <div>
             <div>
                 <span>实弹 [{{ bullet.real }}]</span>
-                <input name="real" type="number" :value="bullet.real.value" min="0" max="8" />
+                <input name="real" type="number" :value="bullet.real.value" min="0" max="10" />
                 <button @click="shootReal">射击/抛壳</button>
             </div>
             <div>
                 <span>空包 [{{ bullet.empty }}]</span>
-                <input name="empty" type="number" :value="bullet.empty.value" min="0" max="8" />
+                <input name="empty" type="number" :value="bullet.empty.value" min="0" max="10" />
                 <button @click="shootEmpty">射击/抛壳</button>
             </div>
         </div>
@@ -93,7 +97,7 @@ function submit(e: Event) {
             <button @click="useConverter">使用转换器 [{{ bullet.converter.value ? '已使用' : '未使用' }}]</button>
         </div>
         <div>
-            <a href="https://github.com/Aigio1064/demon-roulette-bllet-recorder">Aigio1064/demon-roulette-bllet-recorder</a>
+            <a href="https://github.com/Aigio1064/buckshot-roulette-bllet-recorder">Aigio1064/buckshot-roulette-bllet-recorder</a>
         </div>
     </form>
 </template>
